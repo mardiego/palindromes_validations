@@ -28,7 +28,7 @@ RUN /env/bin/pip install uvicorn==0.22.0
 RUN /env/bin/pip install requests
 
 # Create the SQLite database file and the 'jobs' table using SQLite commands
-RUN sqlite3 /app/palindromes.db "CREATE TABLE IF NOT EXISTS jobs (string TEXT, language TEXT);"
+RUN sqlite3 /app/palindromes.db "CREATE TABLE IF NOT EXISTS records (text TEXT, language TEXT);"
 
 # Expose port 8080
 EXPOSE 8080
