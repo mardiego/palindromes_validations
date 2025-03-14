@@ -1,7 +1,7 @@
 from app.controller import delete_record
 from app.controller import validate_record
 from app.controller import get_records
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request, Query
 from fastapi.responses import JSONResponse, Response
 from typing import Optional
 
@@ -19,7 +19,7 @@ async def validate_palindromes(request: Request):
         if result is None:
             raise HTTPException(
                 status_code=400,
-                detail=f"Missing fields"
+                detail=f"Not a palindrome"
             )
         else:
             return JSONResponse(
@@ -37,8 +37,9 @@ async def validate_palindromes(request: Request):
 
 # Method to return and filter the stored palindromes
 @app.get("/palindromes/get_palindromes")
-async def get_palindromes(text: Optional[str] = None,
-                          language: Optional[str] = None):
+async def get_palindromes(text: Optional[str] = Query(None, min_length=1, description="Text of the palindrome"),
+                          language: Optional[str] = Query(None, min_length=1, max_length=50,
+                                                          description="Language of the palindrome")):
     try:
         print("Get Palindromes")
         records = get_records(text, language)
@@ -48,7 +49,7 @@ async def get_palindromes(text: Optional[str] = None,
                 detail=f"No Palindromes found"
             )
         return JSONResponse(
-            content={"message": "Palindromes records matching filter", 'Palindromes': records},
+            content={"response": "Palindromes records matching filter", 'Palindromes': records},
             status_code=200
         )
     except HTTPException as e:
@@ -61,8 +62,8 @@ async def get_palindromes(text: Optional[str] = None,
 
 # Method to delete a palindrome
 @app.delete("/palindromes/delete_palindromes")
-async def delete_palindromes(language: Optional[str] = None,
-                             text: Optional[str] = None,):
+async def delete_palindromes(language: str = Query(..., description="Language of the palindrome"),
+                             text: str = Query(..., description="Text of the palindrome")):
     print("Request to delete a Palindrome entry")
     try:
         result = delete_record(language, text)
