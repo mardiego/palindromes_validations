@@ -10,4 +10,8 @@ class Palindrome:
         print(f"Palindrome {self.text} has been successfully added")
         return f"Palindrome {self.text} has been successfully added"
 
-
+    def covert_to_dict(self):
+        return {
+            "text": self.text,
+            "language": self.language
+        }

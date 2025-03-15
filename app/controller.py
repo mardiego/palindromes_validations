@@ -11,7 +11,7 @@ TABLE_NAME = "palindromes"
 
 # Business logic method to add a palindrome record
 def add_record(palindrome):
-    return insert_entry(DB_PATH, TABLE_NAME, palindrome)
+    return insert_entry(DB_PATH, TABLE_NAME, palindrome.covert_to_dict())
 
 
 # Business logic method to delete a palindrome record

@@ -34,7 +34,7 @@ def sql_query(path, query, params=None):
 
 # Method to insert a record in the database
 def insert_entry(db_path, table_name, record):
-    print(f"Insert entry into DB: {db_path}")
+    print(f"Insert entry into DB: {db_path}, table: {table_name}, record: {record}")
     columns = ", ".join(record.keys())
     placeholders = ", ".join(["?"] * len(record))
     params = list(record.values())
