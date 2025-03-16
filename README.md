@@ -80,6 +80,16 @@ The `deployment.sh` script automates the deployment process to a **Minikube Kube
    ./deployment.sh [development | production]
    ```
 
+### 🚀 5. **Minikube setup**
+
+To enable the ingress port in minikube cluster:
+
+   ```sh
+   minikube service --all -n [development | production]
+   ```
+
+This will open a browser with the ip and port to access the app
+
 The script will:
 - Build the Docker image
 - Push the image to a container registry
