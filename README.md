@@ -49,7 +49,7 @@ docker run -p 8080:8080 palindrome
 ```
 ---
 
-### 🏭️ 3. **Infrastructure Deployment with Terraform**
+### 🏭️ 3. **Infrastructure Deployment with Terraform Setup**
 #### Navigate to the Terraform directory:
 ```sh
 cd terraform
@@ -66,7 +66,7 @@ This will deploy a Kubernetes cluster locally using Minikube.
 
 ---
 
-### ☸️ 4. **Deploy to Kubernetes with `deployment.sh`**
+### ☸️ 3.1. **Deploy to Kubernetes with `deployment.sh`**
 
 The `deployment.sh` script automates the deployment process to a **Minikube Kubernetes cluster**. To deploy the application:
 
@@ -80,7 +80,7 @@ The `deployment.sh` script automates the deployment process to a **Minikube Kube
    ./deployment.sh [development | production]
    ```
 
-### 🚀 5. **Minikube setup**
+### 🚀 3.2. **Minikube setup**
 
 To enable the ingress port in minikube cluster:
 
